@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('New Article') }}</div>
 
                 <div class="card-body">
-                    <form class="" action="/articles/{{ $article->id }}" method="post" id="newArticle">
+                    <form class="" action="/articles/{{ $article->id }}" method="post" id="saveForm">
                         @csrf
                         @method('PUT')
 
@@ -22,13 +22,13 @@
                         @enderror
 
                         <textarea name="content" class="mt-3 form-control @error('content') is-invalid @enderror"
-                            rows="12" form="newArticle"  id="content" >
+                            rows="12" form="saveForm"  id="content" >
 
                             @if ( old('content') )
 
                                     {{ old('content') }}
                             @else
-                                    {{ $article->content ?? '' }}
+                                    {{ $article->content }}
                             @endif
                         </textarea>
 
@@ -38,7 +38,7 @@
                             </span>
                         @enderror
 
-                        <div class="d-flex mt-3">
+                        <div class="d-flex mt-3 flex-wrap">
                             <?php foreach ($themes as  $key => $theme): ?>
                                 <div class="mr-4 ">
                                     <label for="theme{{ $theme->id }}">
@@ -63,12 +63,20 @@
                         </span>
                         @enderror
 
-                        <div class="d-flex">
-                            <input type="submit" value="Save" class="mt-3 btn btn-dark">
-                            <a href="/articles" class="mt-3 ml-3 btn btn-dark">Cancel</a>
-                        </div>
+                    </form>
 
+                    <div class="d-flex justify-content-around">
+                        
+                        <input type="submit" form="saveForm" value="Save" class="mt-3 btn btn-success">
+                        <a href="/articles" class="mt-3 ml-3 btn btn-warning">Cancel</a>
+                        <input type="submit" form="deleteForm" value="Delete" class="btn btn-danger ml-3 mt-3">
 
+                    </div>
+
+                    <form id="deleteForm" action="/articles/{{ $article->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="id" value="{{ $article->id }}">
                     </form>
                 </div>
             </div>

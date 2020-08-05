@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('New Article') }}</div>
 
                 <div class="card-body">
-                    <form class="" action="/articles" method="post" id="newArticle">
+                    <form class="" action="/articles" method="post" id="saveForm">
                         @csrf
 
                         <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
@@ -21,7 +21,7 @@
                         @enderror
 
                         <textarea name="content" class="mt-3 form-control @error('content') is-invalid @enderror"
-                            rows="12" form="newArticle"  id="content" >
+                            rows="12" form="saveForm"  id="content" >
                             {{ old('content') }}
                         </textarea>
 
@@ -52,8 +52,14 @@
                         </span>
                         @enderror
 
-                        <input type="submit" value="Save" class="mt-3 btn btn-dark">
                     </form>
+
+                    <div class="d-flex justify-content-around">
+
+                        <input type="submit" form="saveForm" value="Save" class="mt-3 btn btn-success">
+                        <a href="/articles" class="mt-3 ml-3 btn btn-warning">Cancel</a>
+
+                    </div>
                 </div>
             </div>
         </div>

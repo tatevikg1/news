@@ -80,4 +80,13 @@ class ReporterController extends Controller
         return redirect()->route('articles.index');
     }
 
+    public function destroy(Article $article)
+   {
+       $article->themes()->sync([]);
+
+       $article->delete();
+
+       return redirect()->route('articles.index');
+   }
+
 }

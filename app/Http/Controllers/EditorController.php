@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class EditorController extends Controller
 {
     public function __construct()
     {
@@ -18,34 +18,6 @@ class ArticleController extends Controller
         return view('article.index', compact('articles'));
     }
 
-    public function theme(Article $article)
-    {
 
-    }
-
-    public function create()
-    {
-
-    }
-
-    public function store()
-    {
-
-    }
-
-    public function destroy()
-    {
-
-    }
-
-    public function update()
-    {
-
-    }
-
-    public function edit()
-    {
-
-    }
 
 }
