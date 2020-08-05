@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Article;
 use App\Theme;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReporterController extends Controller
 {
@@ -38,6 +39,7 @@ class ReporterController extends Controller
 
         $article->themes()->sync($data['themes']);
 
+
         return redirect()->route('articles.index');
     }
 
@@ -51,14 +53,13 @@ class ReporterController extends Controller
     public function edit(Article $article)
     {
         $themes = Theme::all();
-        $article = Article::with('themes')->get();
+        $t = DB::table('article_theme')->where('article_id', $article->id)->pluck('theme_id')->toArray();
 
-        dd('article');
 
-        return view('reporter.edit', compact('article', 'themes'));
+        return view('reporter.edit', compact('article', 'themes', 't'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Article $article)
     {
         $data = request()->validate([
             'title' => 'required|max:70',
@@ -66,14 +67,15 @@ class ReporterController extends Controller
             'themes' => 'required',
         ]);
 
+        $article->update([
+            'title' => $data['title'],
+            'content' => $data['content'],
+        ]);
 
-        // $article = new Article;
-        // $article->title = $request->input('title');
-        // $article->content = $request->input('content');
-        // $article->user_id = Auth::user()->id;
-        // $article->save();
+        // dd($article);
 
         $article->themes()->sync($data['themes']);
+        // dd($article->themes);
 
         return redirect()->route('articles.index');
     }

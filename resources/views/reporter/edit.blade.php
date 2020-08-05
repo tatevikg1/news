@@ -47,7 +47,7 @@
                                             @if (old('themes'))
                                                 @if(is_array(old('themes')) && in_array($theme->id, old('themes'))) checked @endif
                                             @else
-                                                @if(in_array($theme->id, $article->themes->id)) checked @endif
+                                                @if(in_array($theme->id, $t)) checked @endif
                                             @endif>
 
                                         {{ $theme->theme }}

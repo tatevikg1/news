@@ -17,6 +17,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
+            $table->boolean('sent')->default('false');
             $table->boolean('confirmed')->default('false');
             $table->foreignId('user_id');
             $table->timestamps();
