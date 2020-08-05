@@ -17,7 +17,6 @@ class ReporterController extends Controller
     public function create()
     {
         $themes = Theme::all();
-        // dd($themes);
 
         return view('reporter.create', compact('themes'));
     }
@@ -30,8 +29,6 @@ class ReporterController extends Controller
             'themes' => 'required',
         ]);
 
-        // dd($data['themes']);
-
 
         $article = new Article;
         $article->title = $request->input('title');
@@ -39,20 +36,46 @@ class ReporterController extends Controller
         $article->user_id = Auth::user()->id;
         $article->save();
 
-        $article->themes()->createMany($data['themes']);
-
-        dd($article);
-
-
+        $article->themes()->sync($data['themes']);
 
         return redirect()->route('articles.index');
     }
 
     public function index()
     {
-        $articles = Article::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(2);
+        $articles = Article::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
 
         return view('reporter.index', compact('articles'));
+    }
+
+    public function edit(Article $article)
+    {
+        $themes = Theme::all();
+        $article = Article::with('themes')->get();
+
+        dd('article');
+
+        return view('reporter.edit', compact('article', 'themes'));
+    }
+
+    public function update(Request $request)
+    {
+        $data = request()->validate([
+            'title' => 'required|max:70',
+            'content' => 'required|min:5',
+            'themes' => 'required',
+        ]);
+
+
+        // $article = new Article;
+        // $article->title = $request->input('title');
+        // $article->content = $request->input('content');
+        // $article->user_id = Auth::user()->id;
+        // $article->save();
+
+        $article->themes()->sync($data['themes']);
+
+        return redirect()->route('articles.index');
     }
 
 }

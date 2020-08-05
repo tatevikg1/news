@@ -14,7 +14,7 @@
                                 {{ $article->title }}
                                 {{ $article->created_at }}
                                 @if ($article->confirmed == 'false')
-                                    <a href="/articles/edit">Edit</a>
+                                    <a href="/articles/{{ $article->id }}/edit ">Edit</a>
                                 @endif
                             </li>
                         <?php endforeach; ?>

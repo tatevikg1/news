@@ -8,11 +8,12 @@
                 <div class="card-header">{{ __('New Article') }}</div>
 
                 <div class="card-body">
-                    <form class="" action="/articles" method="post" id="newArticle">
+                    <form class="" action="/articles/{{ $article->id }}" method="post" id="newArticle">
                         @csrf
+                        @method('PUT')
 
                         <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
-                            value="{{  old('title') }}"  id="title">
+                            value="{{  old('title') ?? $article->title }}"  id="title">
 
                         @error('title')
                             <span class="invalid-feedback" role="alert">
@@ -22,7 +23,13 @@
 
                         <textarea name="content" class="mt-3 form-control @error('content') is-invalid @enderror"
                             rows="12" form="newArticle"  id="content" >
-                            {{ old('content') }}
+
+                            @if ( old('content') )
+
+                                    {{ old('content') }}
+                            @else
+                                    {{ $article->content ?? '' }}
+                            @endif
                         </textarea>
 
                         @error('content')
@@ -37,7 +44,11 @@
                                     <label for="theme{{ $theme->id }}">
                                         <input type="checkbox" name="themes[]" id="theme{{ $theme->id }}"
                                             value="{{ $theme->id }}"
-                                            @if(is_array(old('themes')) && in_array($theme->id, old('themes'))) checked @endif>
+                                            @if (old('themes'))
+                                                @if(is_array(old('themes')) && in_array($theme->id, old('themes'))) checked @endif
+                                            @else
+                                                @if(in_array($theme->id, $article->themes->id)) checked @endif
+                                            @endif>
 
                                         {{ $theme->theme }}
                                      </label>
@@ -52,7 +63,12 @@
                         </span>
                         @enderror
 
-                        <input type="submit" value="Save" class="mt-3 btn btn-dark">
+                        <div class="d-flex">
+                            <input type="submit" value="Save" class="mt-3 btn btn-dark">
+                            <a href="/articles" class="mt-3 ml-3 btn btn-dark">Cancel</a>
+                        </div>
+
+
                     </form>
                 </div>
             </div>

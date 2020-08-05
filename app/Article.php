@@ -17,6 +17,6 @@ class Article extends Model
 
     public function themes()
     {
-        return $this->hasMany(Theme::class);
+        return $this->belongsToMany(Theme::class);
     }
 }
