@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+// use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
 
     use RegistersUsers;
-
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
 
     public function __construct()
@@ -23,24 +23,23 @@ class RegisterController extends Controller
     }
 
 
-    protected function validator(array $data)
+    protected function register(Request $request)
     {
-        return Validator::make($data, [
+        $data = request()->validate([
             'name' => ['required', 'string', 'max:255'],
             'role' => ['required', 'integer', 'max:2'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-    }
 
 
-    protected function create(array $data)
-    {
-        return User::create([
+        User::create([
             'name' => $data['name'],
             'role' => $data['role'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        return redirect()->route('editor.reporters');
     }
 }

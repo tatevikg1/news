@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class EditorController extends Controller
 {
@@ -11,11 +12,12 @@ class EditorController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        $articles = Article::all();
 
-        return view('article.index', compact('articles'));
+    public function reporters()
+    {
+        $reporters = User::where('role', 1)->paginate(5);
+
+        return view('editor.reporters', compact('reporters'));
     }
 
 

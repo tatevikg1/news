@@ -38,9 +38,19 @@
                             <a class="btn btn-success ml-3" href="/articles/create">Write an Article</a>
                         </li>
 
-                        <li>
-                            <a class="btn btn-success ml-3" href="/articles">My Articles</a>
-                        </li>
+                        @if (Auth::user()->role == 0)
+                            <li>
+                                <a class="btn btn-success ml-3" href="/articles">Articles</a>
+                            </li>
+                            <li>
+                                <a class="btn btn-success ml-3"href="/reporters">Reporter</a>
+                            </li>
+                        @else
+                            <li>
+                                <a class="btn btn-success ml-3" href="/articles"> My Articles</a>
+                            </li>
+                        @endif
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

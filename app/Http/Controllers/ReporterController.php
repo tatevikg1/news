@@ -45,7 +45,14 @@ class ReporterController extends Controller
 
     public function index()
     {
-        $articles = Article::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
+        if (Auth::user()->role == 1)
+        {
+            $articles = Article::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
+        }
+        else {
+
+            $articles = Article::paginate(5);
+        }
 
         return view('reporter.index', compact('articles'));
     }

@@ -26,7 +26,11 @@
                                         <a href="/articles/{{ $article->id }}/edit" class='badge badge-warning'>Edit</a>
                                     </td>
                                     <td>
-                                        <a href="/articles/{{ $article->id }}/send" class="badge badge-success">Send</a>
+                                        @if (Auth::user()->role == 0)
+                                            <a href="#" class="badge badge-success">Publish</a>
+                                        @else
+                                            <a href="/articles/{{ $article->id }}/send" class="badge badge-success">Send</a>
+                                        @endif
                                     </td>
 
                                 @endif
