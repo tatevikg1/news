@@ -15,7 +15,8 @@ class PublishController extends Controller
 
     public function update(Article $article)
     {
+        $article->update(['published' => 'true']);
 
-        return $article->update('published' => 'true');
+        return $article;
     }
 }

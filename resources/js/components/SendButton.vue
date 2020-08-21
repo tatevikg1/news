@@ -1,12 +1,9 @@
 <template>
     <div>
-        <button class="badge badge-danger"
+        <button
                 @click="sendArticle"
                 v-text="buttonText"
-                v-if="sent=='false'"></button>
-
-        <p      class="badge badge-success"
-                v-else>Sent</p>
+                :class="[status ? 'badge badge-danger' :  'badge badge-success']"></button>
     </div>
 </template>
 
@@ -30,8 +27,13 @@
 
         methods: {
             sendArticle() {
-                axios.post('send/' + this.articleId)
+                axios.post('send/'+ this.articleId)
                     .then(response => {
+
+                        if (!this.status) {
+                            return
+                        }
+
                         this.status = ! this.status;
 
                         console.log(response.data);
@@ -46,7 +48,7 @@
 
         computed: {
             buttonText() {
-                return 'Send';
+                return (this.status) ? 'Send' : 'Sent';
             }
         }
     }

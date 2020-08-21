@@ -1,8 +1,9 @@
 <template>
     <div>
-        <p class="badge badge-success"  v-if="published=='true'">Published</p>
-
-        <button class="badge badge-danger" v-else @click="publish" v-text="buttonText" >Publish</button>
+        <button
+                @click="publish"
+                v-text="buttonText"
+                :class="[status ? 'badge badge-danger' :  'badge badge-success']"></button>
     </div>
 </template>
 
@@ -26,8 +27,13 @@
 
         methods: {
             publish() {
-                axios.post('/publish/' + this.articleId)
+                axios.post('publish/'+ this.articleId)
                     .then(response => {
+
+                        if (!this.status) {
+                            return
+                        }
+
                         this.status = ! this.status;
 
                         console.log(response.data);
@@ -42,7 +48,7 @@
 
         computed: {
             buttonText() {
-                return 'Publish';
+                return (this.status) ? 'Publish' : 'Published';
             }
         }
     }

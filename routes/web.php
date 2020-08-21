@@ -41,10 +41,10 @@ Route::prefix('articles')->group(function(){
 
     });
 
+});
+
 // component controllers routes
 Route::middleware('auth')->group(function(){
-    Route::post('send/{article}',       'SendController@update');
+    Route::post('/send/{article}',      'SendController@update');
     Route::post('publish/{article}',    'PublishController@update');
-    });
-
 });
