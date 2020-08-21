@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card" id="app">
                 <div class="card-header">{{ __('Articles') }}</div>
 
                 <div class="card-body">
@@ -16,10 +16,11 @@
                             <th colspan="2">Action</th>
                         </tr>
                         <?php foreach ($articles as $article): ?>
-                            <tr>
+                            <tr class="table_row">
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->updated_at }}</td>
+                                <td>{{ $article->sent }}</td>
 
                                 @if ($article->confirmed == 'false')
                                     <td>
@@ -29,7 +30,9 @@
                                         @if (Auth::user()->role == 0)
                                             <a href="#" class="badge badge-success">Publish</a>
                                         @else
-                                            <a href="/articles/{{ $article->id }}/send" class="badge badge-success">Send</a>
+
+                                        <send-button article-id="{{ $article->id }}" sent={{ $article->sent }}></send-button>
+
                                         @endif
                                     </td>
 

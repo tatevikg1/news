@@ -7,19 +7,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+// staff login
 Route::get  ('login',   'Auth\LoginController@showLoginForm')->name('login');
 Route::post ('login',   'Auth\LoginController@login');
 Route::post ('logout',  'Auth\LoginController@logout')->name('logout');
 
-
+// editor registers peporters
 Route::middleware('is.editor')->group(function(){
     Route::get  ('register',    'Auth\RegisterController@showRegistrationForm');
     Route::post ('register',    'Auth\RegisterController@register');
     Route::get ('/reporters', 'EditorController@reporters')->name('editor.reporters');
 });
 
-
+// password reset for staff
 Route::middleware('auth')->group(function(){
     Route::get  ('password/reset',          'Auth\ForgotPasswordController@showLinkRequestForm');
     Route::post ('password/email',          'Auth\ForgotPasswordController@sendResetLinkEmail');
@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function(){
     Route::post ('password/reset',          'Auth\ResetPasswordController@reset');
 });
 
+
+// reporters work with articles
 Route::prefix('articles')->group(function(){
     Route::get  ('/create',         'ReporterController@create')    ->name('articles.create');
     Route::post ('/',               'ReporterController@store')     ->name('articles.store');
@@ -38,4 +40,8 @@ Route::prefix('articles')->group(function(){
     Route::get('/articles/{{ $article->id }}/send', function(){
 
     });
+
+// component controllers routes
+Route::post('send/{article}',       'SendController@store');
+Route::post('publish/{article}',    'PublishController@store');
 });

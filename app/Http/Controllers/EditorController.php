@@ -21,5 +21,4 @@ class EditorController extends Controller
     }
 
 
-
 }

@@ -38,18 +38,25 @@
                             <a class="btn btn-success ml-3" href="/articles/create">Write an Article</a>
                         </li>
 
-                        @if (Auth::user()->role == 0)
-                            <li>
-                                <a class="btn btn-success ml-3" href="/articles">Articles</a>
-                            </li>
-                            <li>
-                                <a class="btn btn-success ml-3"href="/reporters">Reporter</a>
-                            </li>
+                        @guest
                         @else
-                            <li>
-                                <a class="btn btn-success ml-3" href="/articles"> My Articles</a>
-                            </li>
-                        @endif
+
+                            @if (Auth::user()->role == 0)
+                                <li>
+                                    <a href="/articles" class="btn btn-success ml-3 notification">
+                                        <span>Articles</span>
+                                        <span class="new_notif">{{ count(Auth::user()->unreadnotifications) }}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-success ml-3" href="/reporters">Reporter</a>
+                                </li>
+                            @else
+                                <li>
+                                    <a class="btn btn-success ml-3" href="/articles"> My Articles</a>
+                                </li>
+                            @endif
+                        @endguest
 
                     </ul>
 

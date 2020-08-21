@@ -3,7 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-// use App\Notifications\NewArticle;
+use App\Notifications\NewArticle;
+use App\User;
 
 class Article extends Model
 {

@@ -31,7 +31,7 @@
                             </span>
                         @enderror
 
-                        <div class="d-flex mt-3">
+                        <div class="d-flex mt-3 flex-wrap">
                             <?php foreach ($themes as  $key => $theme): ?>
                                 <div class="mr-4 ">
                                     <label for="theme{{ $theme->id }}">

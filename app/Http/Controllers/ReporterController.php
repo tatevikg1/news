@@ -7,6 +7,8 @@ use App\Article;
 use App\Theme;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\User;
+use App\Notifications\NewArticle;
 
 class ReporterController extends Controller
 {
@@ -39,6 +41,8 @@ class ReporterController extends Controller
 
         $article->themes()->sync($data['themes']);
 
+        $editor = User::where('role', 0)->first();
+        $editor->notify(new NewArticle($article));
 
         return redirect()->route('articles.index');
     }
@@ -51,10 +55,14 @@ class ReporterController extends Controller
         }
         else {
 
-            $articles = Article::paginate(5);
+            $articles = Article::where('sent', 'true')->paginate(5);
         }
 
-        return view('reporter.index', compact('articles'));
+        $editor = User::where('role', 0)->first();
+        $temp = $editor->unreadnotifications->toArray();
+        $notifications = array_column(array_column($temp, 'data'), 'article_id');
+
+        return view('reporter.index', compact('articles', 'notifications'));
     }
 
     public function edit(Article $article)
@@ -79,10 +87,8 @@ class ReporterController extends Controller
             'content' => $data['content'],
         ]);
 
-        // dd($article);
-
         $article->themes()->sync($data['themes']);
-        // dd($article->themes);
+
 
         return redirect()->route('articles.index');
     }
