@@ -42,6 +42,9 @@ Route::prefix('articles')->group(function(){
     });
 
 // component controllers routes
-Route::post('send/{article}',       'SendController@store');
-Route::post('publish/{article}',    'PublishController@store');
+Route::middleware('auth')->group(function(){
+    Route::post('send/{article}',       'SendController@update');
+    Route::post('publish/{article}',    'PublishController@update');
+    });
+
 });

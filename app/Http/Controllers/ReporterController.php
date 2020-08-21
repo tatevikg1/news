@@ -41,8 +41,8 @@ class ReporterController extends Controller
 
         $article->themes()->sync($data['themes']);
 
-        $editor = User::where('role', 0)->first();
-        $editor->notify(new NewArticle($article));
+        // $editor = User::where('role', 0)->first();
+        // $editor->notify(new NewArticle($article));
 
         return redirect()->route('articles.index');
     }

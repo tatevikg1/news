@@ -20,20 +20,27 @@
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->updated_at }}</td>
-                                <td>{{ $article->sent }}</td>
 
-                                @if ($article->confirmed == 'false')
+
+
+                                @if ($article->published == 'true')
+                                <td>
+                                    <p class="badge badge-success">Published</p>
+                                </td>
+
+                                @elseif ($article->sent == 'true')
                                     <td>
-                                        <a href="/articles/{{ $article->id }}/edit" class='badge badge-warning'>Edit</a>
+                                        <p class="badge badge-warning">Waiting</p>
+
+                                    </td>
+                                @else
+                                    <td>
+                                        <a href="/articles/{{ $article->id }}/edit" class='badge badge-warning' >Edit</a>
                                     </td>
                                     <td>
-                                        @if (Auth::user()->role == 0)
-                                            <a href="#" class="badge badge-success">Publish</a>
-                                        @else
 
-                                        <send-button article-id="{{ $article->id }}" sent={{ $article->sent }}></send-button>
+                                        <send-button article-id="{{ $article->id }}" sent="{{ $article->sent }}"></send-button>
 
-                                        @endif
                                     </td>
 
                                 @endif

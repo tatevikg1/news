@@ -1,12 +1,8 @@
 <template>
     <div>
-        <button class="badge badge-danger"
-                @click="sendArticle"
-                v-text="buttonText"
-                v-if="sent=='false'"></button>
+        <p class="badge badge-success"  v-if="published=='true'">Published</p>
 
-        <p      class="badge badge-success"
-                v-else>Sent</p>
+        <button class="badge badge-danger" v-else @click="publish" v-text="buttonText" >Publish</button>
     </div>
 </template>
 
@@ -14,7 +10,7 @@
     export default {
         props: [
             'articleId',
-            'sent'
+            'published'
         ],
 
         mounted() {
@@ -23,14 +19,14 @@
 
         data: function() {
             return  {
-                status: this.sent,
+                status: this.published,
             }
         },
 
 
         methods: {
-            sendArticle() {
-                axios.post('send/' + this.articleId)
+            publish() {
+                axios.post('/publish/' + this.articleId)
                     .then(response => {
                         this.status = ! this.status;
 
@@ -46,7 +42,7 @@
 
         computed: {
             buttonText() {
-                return 'Send';
+                return 'Publish';
             }
         }
     }
