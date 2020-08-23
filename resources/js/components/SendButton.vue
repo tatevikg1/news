@@ -3,7 +3,11 @@
         <button
                 @click="sendArticle"
                 v-text="buttonText"
-                :class="[status ? 'badge badge-danger' :  'badge badge-success']"></button>
+                :class="[status ? 'badge badge-danger' :  'badge badge-warning']">
+        </button>
+
+        <a v-bind:href="url" class='badge badge-warning' v-show="status">Edit</a>
+
     </div>
 </template>
 
@@ -11,7 +15,8 @@
     export default {
         props: [
             'articleId',
-            'sent'
+            'sent',
+            'url',
         ],
 
         mounted() {
@@ -31,6 +36,7 @@
                     .then(response => {
 
                         if (!this.status) {
+                            this.url = '';
                             return
                         }
 
@@ -49,7 +55,8 @@
         computed: {
             buttonText() {
                 return (this.status) ? 'Send' : 'Sent';
-            }
+            },
+
         }
     }
 </script>

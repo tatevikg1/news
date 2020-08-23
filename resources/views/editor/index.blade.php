@@ -20,6 +20,7 @@
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->updated_at }}</td>
+                                <td>{{ $article->published }}</td>
 
 
 
@@ -28,13 +29,9 @@
                                     <p class="badge badge-success">Published</p>
                                 </td>
 
-                                @elseif ($article->sent == 'true')
-                                    <td>
-                                        <p class="badge badge-warning">Sent</p>
-                                    </td>
                                 @else
                                     <td>
-                                        <send-button url="/articles/{{ $article->id }}/edit" article-id="{{ $article->id }}" sent="{{ $article->sent }}"></send-button>
+                                        <publish-button url="/articles/{{ $article->id }}/edit" article-id="{{ $article->id }}" sent="{{ $article->sent }}"></publish-button>
                                     </td>
 
                                 @endif

@@ -49,14 +49,9 @@ class ReporterController extends Controller
 
     public function index()
     {
-        if (Auth::user()->role == 1)
-        {
-            $articles = Article::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
-        }
-        else {
 
-            $articles = Article::where('sent', 'true')->paginate(5);
-        }
+        $articles = Article::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
+
 
         $editor = User::where('role', 0)->first();
         $temp = $editor->unreadnotifications->toArray();
