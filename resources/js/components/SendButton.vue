@@ -3,8 +3,11 @@
         <button
                 @click="sendArticle"
                 v-text="buttonText"
-                :class="[status ? 'badge badge-danger' :  'badge badge-warning']">
+                v-show="status"
+                class="badge badge-danger">
         </button>
+
+        <p class='badge badge-warning' v-show="!status">Sent</p>
 
         <a v-bind:href="url" class='badge badge-warning' v-show="status">Edit</a>
 

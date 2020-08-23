@@ -41,8 +41,6 @@ class ReporterController extends Controller
 
         $article->themes()->sync($data['themes']);
 
-        // $editor = User::where('role', 0)->first();
-        // $editor->notify(new NewArticle($article));
 
         return redirect()->route('articles.index');
     }
@@ -52,10 +50,10 @@ class ReporterController extends Controller
 
         $articles = Article::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
 
-
         $editor = User::where('role', 0)->first();
         $temp = $editor->unreadnotifications->toArray();
         $notifications = array_column(array_column($temp, 'data'), 'article_id');
+
 
         return view('reporter.index', compact('articles', 'notifications'));
     }
@@ -64,6 +62,11 @@ class ReporterController extends Controller
     {
         $themes = Theme::all();
         $t = DB::table('article_theme')->where('article_id', $article->id)->pluck('theme_id')->toArray();
+
+        if(Auth::user()->role == 0){
+            
+            DB::table('notifications')->where('data', '{"article_id":'.$article->id.'}')->update(['read_at' => now()]);
+        }
 
 
         return view('reporter.edit', compact('article', 'themes', 't'));

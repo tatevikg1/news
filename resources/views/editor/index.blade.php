@@ -20,8 +20,7 @@
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->updated_at }}</td>
-                                <td>{{ $article->published }}</td>
-
+                                
 
                                 @if ($article->published == 'true')
                                 <td>

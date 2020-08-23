@@ -34,7 +34,7 @@
                     <div class="d-flex mt-3 flex-wrap">
                         <?php foreach ($themes as  $key => $theme): ?>
                             <div class="mr-4 ">
-                                <a href="/{{$theme->id }}" class=" btn btn-sm">{{ ucfirst($theme->theme) }}</a>
+                                <a href="/themes/{{ $theme->id }}" class=" btn btn-sm">{{ ucfirst($theme->theme) }}</a>
 
                             </div>
                         <?php endforeach; ?>

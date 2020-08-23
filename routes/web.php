@@ -4,8 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index')->name('home');
 
 // staff login
 Route::get  ('login',   'Auth\LoginController@showLoginForm')->name('login');
@@ -38,10 +36,6 @@ Route::prefix('articles')->group(function(){
     Route::put  ('/{article}',      'ReporterController@update')    ->name('articles.update');
     Route::delete ('/{article}',    'ReporterController@destroy')   ->name('articles.delete');
 
-    Route::get('/articles/{{ $article->id }}/send', function(){
-
-    });
-
 });
 
 // component controllers routes
@@ -49,3 +43,9 @@ Route::middleware('auth')->group(function(){
     Route::post('/send/{article}',      'SendController@update');
     Route::post('/publish/{article}',    'PublishController@update');
 });
+
+
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/{article}','HomeController@show')->name('article');
+Route::get('/themes/{theme}', 'HomeController@filter');

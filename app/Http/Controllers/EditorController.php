@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Article;
+use Illuminate\Notifications\Notifiable;
 
 class EditorController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('is.editor');
     }
 
 
@@ -23,9 +24,13 @@ class EditorController extends Controller
 
     public function index()
     {
-        $articles = Article::where('sent', 'true')->paginate(5);
+        $articles = Article::where('sent', 'true')->latest()->paginate(5);
 
-        return view('editor.index', compact('articles'));
+        $editor = User::where('role', 0)->first();
+        $temp = $editor->unreadnotifications->toArray();
+        $notifications = array_column(array_column($temp, 'data'), 'article_id');
+
+        return view('editor.index', compact('articles', 'notifications'));
     }
 
 }

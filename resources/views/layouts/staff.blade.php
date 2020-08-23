@@ -45,18 +45,20 @@
                                 <li>
                                     <a href="/all_articles" class="btn btn-success ml-3 notification">
                                         <span>Articles</span>
+                                        @if(count(Auth::user()->unreadnotifications)>0)
                                         <span class="new_notif">{{ count(Auth::user()->unreadnotifications) }}</span>
+                                        @endif
                                     </a>
                                 </li>
                                 <li>
                                     <a class="btn btn-success ml-3" href="/articles"> My Articles</a>
                                 </li>
                                 <li>
-                                    <a class="btn btn-success ml-3" href="/reporters">Reporter</a>
+                                    <a class="btn btn-success ml-3" href="/reporters">Reporters</a>
                                 </li>
                             @else
                                 <li>
-                                    <a class="btn btn-success ml-3" href="/articles"> My Articles</a>
+                                    <a class="btn btn-success ml-3" href="/articles"> Articles</a>
                                 </li>
                             @endif
                         @endguest

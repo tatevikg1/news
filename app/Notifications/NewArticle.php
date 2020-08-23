@@ -23,17 +23,8 @@ class NewArticle extends Notification
 
     public function via($notifiable)
     {
-        return [ 'database'];
+        return ['database'];
     }
-
-
-    // public function toMail($notifiable)
-    // {
-    //     return (new MailMessage)
-    //                 ->line('The introduction to the notification.')
-    //                 ->action('Notification Action', url('/articles/'.$this->article->id.'/edit'))
-    //                 ->line('Thank you for using our application!');
-    // }
 
 
     public function toDatabase($notifiable)
@@ -43,11 +34,4 @@ class NewArticle extends Notification
         ];
     }
 
-
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
-    }
 }
