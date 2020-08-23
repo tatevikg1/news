@@ -23,7 +23,6 @@
                                 <td>{{ $article->published }}</td>
 
 
-
                                 @if ($article->published == 'true')
                                 <td>
                                     <p class="badge badge-success">Published</p>
@@ -31,7 +30,7 @@
 
                                 @else
                                     <td>
-                                        <publish-button url="/articles/{{ $article->id }}/edit" article-id="{{ $article->id }}" sent="{{ $article->sent }}"></publish-button>
+                                        <publish-button url="/articles/{{ $article->id }}/edit" article-id="{{ $article->id }}" published="{{ $article->published }}"></publish-button>
                                     </td>
 
                                 @endif

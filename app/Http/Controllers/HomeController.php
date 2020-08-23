@@ -12,12 +12,13 @@ class HomeController extends Controller
     public function index()
     {
         $themes = Theme::all();
+        $articles = Article::all()->paginate(10);
 
-        return view('home', compact('themes'));
+        return view('home', compact('themes', 'articles'));
     }
 
     public function show()
     {
-        
+
     }
 }
