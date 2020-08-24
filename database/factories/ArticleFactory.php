@@ -10,10 +10,10 @@ use Illuminate\Support\Str;
 
 $factory->define(Article::class, function (Faker $faker) {
     return [
-        'title' => $faker->unique()->word,
-        'content' => $faker->word,
+        'title' => $faker->unique()->sentence,
+        'content' => $faker->realText($maxNbChars = 1000, $indexSize = 2),
         'sent' => 'false',
-        'published' => "false",
+        'published' => "true",
         'user_id' => "2",
 
 

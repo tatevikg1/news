@@ -1,11 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Srisakdi:wght@400&display=swap);@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;
 
-/*!
- * Bootstrap v4.5.0 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+700&display=swap);@charset "UTF-8";
 
 :root {
   --blue: #3490dc;
@@ -10934,29 +10929,40 @@ textarea {
 }
 
 body {
-  background-color: #32a852;
+  background-color: white;
 }
 
 #appName {
-  color: white;
-  text-shadow: 1px 1px 2px black, 0 0 30px blue, 0 0 5px green;
-  font-size: 30px;
-  margin-left: 5px;
-}
-
-.notification {
+  color: black;
+  font-family: "Srisakdi", cursive;
+  font-weight: bold;
+  text-align: center;
   text-decoration: none;
-  position: relative;
-  display: inline-block;
 }
 
-.notification .new_notif {
+.navbar {
+  height: 50px;
+}
+
+strong {
+  font-weight: bold;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.vertical {
+  border-left: 1px solid gray;
+  height: 90%;
   position: absolute;
-  top: -10px;
-  right: -10px;
-  padding: 5px 10px;
-  border-radius: 50%;
-  background-color: red;
+  left: 50%;
+}
+
+.pagination li a {
   color: white;
+  background-color: gray;
+}
+
+.pagination li .active {
+  color: white;
+  background-color: gray;
 }
 

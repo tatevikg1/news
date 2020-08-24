@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/staff.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -50,6 +50,16 @@
                                         @endif
                                     </a>
                                 </li>
+
+                                <li>
+                                    <a href="/all_articles" class="btn btn-success ml-3 notification">
+                                        <span>Articles</span>
+                                        @if(count(Auth::user()->unreadnotifications)>0)
+                                        <span class="new_notif">{{ count(Auth::user()->unreadnotifications) }}</span>
+                                        @endif
+                                    </a>
+                                </li>
+
                                 <li>
                                     <a class="btn btn-success ml-3" href="/articles"> My Articles</a>
                                 </li>

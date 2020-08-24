@@ -2,9 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-
-
 // staff login
 Route::get  ('login',   'Auth\LoginController@showLoginForm')->name('login');
 Route::post ('login',   'Auth\LoginController@login');
@@ -44,8 +41,10 @@ Route::middleware('auth')->group(function(){
     Route::post('/publish/{article}',    'PublishController@update');
 });
 
-
+//routes for audience (people who read articles)
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/{article}','HomeController@show')->name('article');
 Route::get('/themes/{theme}', 'HomeController@filter');
+Route::get('/staff', 'HomeController@staff');
+Route::get('/about', 'HomeController@about');
+Route::get('/{article}','HomeController@show')->name('article');

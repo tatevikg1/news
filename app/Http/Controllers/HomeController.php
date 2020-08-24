@@ -15,9 +15,9 @@ class HomeController extends Controller
     public function index()
     {
         $themes = Theme::all();
-        $articles = Article::where('published','true')->orderBy('created_at', 'desc')->paginate(10);
+        $articles = Article::where('published','true')->orderBy('created_at', 'desc')->paginate(20);
 
-        return view('home', compact('themes', 'articles'));
+        return view('audience.home', compact('themes', 'articles'));
     }
 
     public function show(Article $article)
@@ -26,17 +26,32 @@ class HomeController extends Controller
         $themes = Theme::all();
 
 
-        return view('article', compact('article', 'themes', 'author'));
+        return view('audience.article', compact('article', 'themes', 'author'));
     }
 
     public function filter(Theme $theme)
     {
-        $articles = $theme->articles()->latest()->paginate(10);
+        $articles = $theme->articles()->latest()->paginate(20);
 
-        $articles = $articles->items();
 
         $themes = Theme::all();
 
-        return view('home', compact('themes', 'articles'));
+        return view('audience.home', compact('themes', 'articles'));
     }
+
+    public function staff()
+    {
+        $staff = User::all();
+        $themes = Theme::all();
+
+        return view('audience.staff', compact('staff', 'themes'));
+    }
+
+    public function about()
+    {
+        $themes = Theme::all();
+
+        return view('audience.about', compact('themes'));
+    }
+
 }
