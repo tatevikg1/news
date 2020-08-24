@@ -8,6 +8,7 @@ use App\Article;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -25,8 +26,13 @@ class HomeController extends Controller
         $author = User::where('id', $article->user_id)->first();
         $themes = Theme::all();
 
+        if($article->published == 'true' || Auth::check()){
 
-        return view('audience.article', compact('article', 'themes', 'author'));
+            return view('audience.article', compact('article', 'themes', 'author'));
+        }
+        else {
+            return view('layouts.error', compact('themes'));
+        }
     }
 
     public function filter(Theme $theme)

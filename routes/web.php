@@ -12,7 +12,7 @@ Route::middleware('is.editor')->group(function(){
     Route::get  ('register',    'Auth\RegisterController@showRegistrationForm');
     Route::post ('register',    'Auth\RegisterController@register');
     Route::get ('/reporters', 'EditorController@reporters')->name('editor.reporters');
-    Route::get ('/all_articles', 'EditorController@index');
+    Route::get ('/all_articles', 'EditorController@index')->name('editor.index');
 });
 
 // password reset for staff

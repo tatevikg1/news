@@ -4,12 +4,12 @@
                 @click="sendArticle"
                 v-text="buttonText"
                 v-show="status"
-                class="badge badge-danger">
+                class="btn btn-outline-danger">
         </button>
 
-        <p class='badge badge-warning' v-show="!status">Sent</p>
+        <p class='btn btn-outline-secondary' v-show="!status">Sent</p>
 
-        <a v-bind:href="url" class='badge badge-warning' v-show="status">Edit</a>
+        <a v-bind:href="url"  class='btn btn-outline-primary' v-show="status">Edit</a>
 
     </div>
 </template>

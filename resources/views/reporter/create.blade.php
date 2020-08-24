@@ -47,9 +47,9 @@
                         </div>
 
                         @error('themes')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>Select at least one theme.</strong>
-                        </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>Select at least one theme.</strong>
+                            </span>
                         @enderror
 
                     </form>

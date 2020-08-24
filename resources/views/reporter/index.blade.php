@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card" id="app-buttons">
+            <div class="card">
                 <div class="card-header">{{ __('Articles') }}</div>
 
                 <div class="card-body">
@@ -25,12 +25,12 @@
 
                                 @if ($article->published == 'true')
                                 <td>
-                                    <p class="badge badge-success">Published</p>
+                                    <a href="/{{ $article->id }}" class="btn btn-outline-success">Published</a>
                                 </td>
 
                                 @elseif ($article->sent == 'true')
                                     <td>
-                                        <p class="badge badge-warning">Sent</p>
+                                        <a href='/{{ $article->id }}' class="btn btn-outline-secondary">Sent</a>
                                     </td>
                                 @else
                                     <td>

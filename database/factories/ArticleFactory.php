@@ -12,8 +12,8 @@ $factory->define(Article::class, function (Faker $faker) {
     return [
         'title' => $faker->unique()->sentence,
         'content' => $faker->realText($maxNbChars = 1000, $indexSize = 2),
-        'sent' => 'false',
-        'published' => "true",
+        'sent' => 'true',
+        'published' => "false",
         'user_id' => "2",
 
 

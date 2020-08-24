@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card" id="app">
+            <div class="card">
                 <div class="card-header">{{ __('Articles') }}</div>
 
                 <div class="card-body">
@@ -20,18 +20,20 @@
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->updated_at }}</td>
-                                
+
 
                                 @if ($article->published == 'true')
-                                <td>
-                                    <p class="badge badge-success">Published</p>
-                                </td>
+                                    <td>
+                                        <a href="/{{ $article->id }}" class="btn btn-outline-success">Published</a>
+                                    </td>
 
                                 @else
                                     <td>
-                                        <publish-button url="/articles/{{ $article->id }}/edit" article-id="{{ $article->id }}" published="{{ $article->published }}"></publish-button>
+                                        <publish-button url="/articles/{{ $article->id }}/edit"
+                                                        article-id="{{ $article->id }}"
+                                                        published="{{ $article->published }}">
+                                        </publish-button>
                                     </td>
-
                                 @endif
 
                             </tr>

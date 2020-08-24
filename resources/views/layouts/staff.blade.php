@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/staff.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -34,44 +34,37 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
-                        <li>
-                            <a class="btn btn-success ml-3" href="/articles/create">Write an Article</a>
+                    @guest
+                    @else
+
+                        <li  class='btn-hover'>
+                            <a class="btn btn-link ml-3" href="/articles/create">Write an Article</a>
                         </li>
 
-                        @guest
+                        @if (Auth::user()->role == 0)
+                            <li class='btn-hover'>
+                                <a href="/all_articles" class="btn btn-link ml-3 notification">
+                                    <span>Articles</span>
+                                    @if(count(Auth::user()->unreadnotifications)>0)
+                                    <span class="new_notif">{{ count(Auth::user()->unreadnotifications) }}</span>
+                                    @endif
+                                </a>
+                            </li>
+
+
+                            <li  class='btn-hover'>
+                                <a class="btn btn-link ml-3" href="/articles"> My Articles</a>
+                            </li>
+                            <li  class='btn-hover'>
+                                <a class="btn btn-link ml-3" href="/reporters">Reporters</a>
+                            </li>
                         @else
+                            <li  class='btn-hover'>
+                                <a class="btn btn-link ml-3" href="/articles"> Articles</a>
+                            </li>
+                        @endif
+                    @endguest
 
-                            @if (Auth::user()->role == 0)
-                                <li>
-                                    <a href="/all_articles" class="btn btn-success ml-3 notification">
-                                        <span>Articles</span>
-                                        @if(count(Auth::user()->unreadnotifications)>0)
-                                        <span class="new_notif">{{ count(Auth::user()->unreadnotifications) }}</span>
-                                        @endif
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="/all_articles" class="btn btn-success ml-3 notification">
-                                        <span>Articles</span>
-                                        @if(count(Auth::user()->unreadnotifications)>0)
-                                        <span class="new_notif">{{ count(Auth::user()->unreadnotifications) }}</span>
-                                        @endif
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="btn btn-success ml-3" href="/articles"> My Articles</a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-success ml-3" href="/reporters">Reporters</a>
-                                </li>
-                            @else
-                                <li>
-                                    <a class="btn btn-success ml-3" href="/articles"> Articles</a>
-                                </li>
-                            @endif
-                        @endguest
 
                     </ul>
 

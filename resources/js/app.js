@@ -17,6 +17,6 @@ Vue.component('publish-button', require('./components/PublishButton.vue').defaul
  */
 
 const app = new Vue({
-    el: '#app-buttons',
+    el: '#app',
 
 });

@@ -41,6 +41,13 @@ class ReporterController extends Controller
 
         $article->themes()->sync($data['themes']);
 
+        if (Auth::user()->role  == 0){
+            $article->update(['sent' => 'true']);
+
+            return redirect()->route('editor.index');
+
+        }
+
 
         return redirect()->route('articles.index');
     }
@@ -64,7 +71,7 @@ class ReporterController extends Controller
         $t = DB::table('article_theme')->where('article_id', $article->id)->pluck('theme_id')->toArray();
 
         if(Auth::user()->role == 0){
-            
+
             DB::table('notifications')->where('data', '{"article_id":'.$article->id.'}')->update(['read_at' => now()]);
         }
 

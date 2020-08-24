@@ -3,10 +3,13 @@
         <button
                 @click="publish"
                 v-text="buttonText"
-                :class="[status ? 'badge badge-danger' :  'badge badge-success']">
+                v-show="status"
+                :class="[status ? 'btn btn-outline-success' :  'badge badge-success']">
         </button>
 
-        <a v-bind:href="url" class='badge badge-warning' v-show="status">Edit</a>
+        <p class='btn btn-outline-success' v-show="!status">Published</p>
+
+        <a v-bind:href="url" class='btn btn-outline-primary' v-show="status">Edit</a>
 
     </div>
 </template>
