@@ -9,18 +9,16 @@ Route::post ('logout',  'Auth\LoginController@logout')->name('logout');
 
 // editor registers peporters
 Route::middleware('is.editor')->group(function(){
-    Route::get  ('register',    'Auth\RegisterController@showRegistrationForm');
-    Route::post ('register',    'Auth\RegisterController@register');
-    Route::get ('/reporters', 'EditorController@reporters')->name('editor.reporters');
-    Route::get ('/all_articles', 'EditorController@index')->name('editor.index');
+    Route::get  ('register',        'Auth\RegisterController@showRegistrationForm');
+    Route::post ('register',        'Auth\RegisterController@register');
+    Route::get  ('/reporters',      'EditorController@reporters')->name('editor.reporters');
+    Route::get  ('/all_articles',   'EditorController@index')->name('editor.index');
 });
 
-// password reset for staff
+// edit staff profile (user data)
 Route::middleware('auth')->group(function(){
-    Route::get  ('password/reset',          'Auth\ForgotPasswordController@showLinkRequestForm');
-    Route::post ('password/email',          'Auth\ForgotPasswordController@sendResetLinkEmail');
-    Route::get  ('password/reset/{token}',  'Auth\ResetPasswordController@showResetForm');
-    Route::post ('password/reset',          'Auth\ResetPasswordController@reset');
+    Route::get  ('/profile/edit',         'Auth\EditProfileController@showEditForm');
+    Route::post ('/profile/edit',         'Auth\EditProfileController@update');
 });
 
 
@@ -37,14 +35,14 @@ Route::prefix('articles')->group(function(){
 
 // component controllers routes
 Route::middleware('auth')->group(function(){
-    Route::post('/send/{article}',      'SendController@update');
+    Route::post('/send/{article}',       'SendController@update');
     Route::post('/publish/{article}',    'PublishController@update');
 });
 
 //routes for audience (people who read articles)
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/themes/{theme}', 'HomeController@filter');
-Route::get('/staff', 'HomeController@staff');
-Route::get('/about', 'HomeController@about');
-Route::get('/{article}','HomeController@show')->name('article');
+Route::get('/',                 'HomeController@index');
+Route::get('/home',             'HomeController@index')->name('home');
+Route::get('/themes/{theme}',   'HomeController@filter');
+Route::get('/staff',            'HomeController@staff');
+Route::get('/about',            'HomeController@about');
+Route::get('/{article}',        'HomeController@show')->name('article');

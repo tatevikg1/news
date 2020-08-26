@@ -14,8 +14,7 @@ $factory->define(Article::class, function (Faker $faker) {
         'content' => $faker->realText($maxNbChars = 1000, $indexSize = 2),
         'sent' => 'true',
         'published' => "false",
-        'user_id' => "2",
-
+        'user_id' => "1",
 
     ];
 });

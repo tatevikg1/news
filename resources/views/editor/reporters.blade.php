@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card d-flex">
-                <div class="card-header">
-                    {{ __('Reporters') }}
-                    <a href="/register" class="btn btn-success" style="margin-left:70%">Add Reporter</a>
+                <div class="card-header btn-hover">
+                    <strong>{{ __('Reporters') }}</strong>
+                    <a href="/register" class="btn btn-link" style="margin-left:70%">Add Reporter</a>
                 </div>
 
                 <div class="card-body">

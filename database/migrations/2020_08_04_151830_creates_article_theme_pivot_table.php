@@ -14,7 +14,6 @@ class CreatesArticleThemePivotTable extends Migration
             $table->foreignId('article_id');
             $table->foreignId('theme_id');
             $table->timestamps();
-
         });
     }
 

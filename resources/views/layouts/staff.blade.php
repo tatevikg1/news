@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+
 </head>
 <body>
     <div id="app">
@@ -40,6 +43,8 @@
                         <li  class='btn-hover'>
                             <a class="btn btn-link ml-3" href="/articles/create">Write an Article</a>
                         </li>
+
+
 
                         @if (Auth::user()->role == 0)
                             <li class='btn-hover'>
@@ -91,6 +96,9 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/profile/edit">
+                                        Edit Profile
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

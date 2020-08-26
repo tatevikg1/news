@@ -35,9 +35,10 @@
                             <?php foreach ($themes as  $key => $theme): ?>
                                 <div class="mr-4 ">
                                     <label for="theme{{ $theme->id }}">
-                                        <input type="checkbox" name="themes[]" id="theme{{ $theme->id }}"
-                                            value="{{ $theme->id }}"
-                                            @if(is_array(old('themes')) && in_array($theme->id, old('themes'))) checked @endif>
+                                        <input  type="checkbox"
+                                                name="themes[]" id="theme{{ $theme->id }}"
+                                                value="{{ $theme->id }}"
+                                                @if(is_array(old('themes')) && in_array($theme->id, old('themes'))) checked @endif>
 
                                         {{ $theme->theme }}
                                      </label>

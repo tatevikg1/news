@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => 'Editor',
+        'name' => 'mr. Editor',
         'role' => 0,
         'email' => 'editor@gmail.com',
         'email_verified_at' => now(),
