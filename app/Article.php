@@ -12,9 +12,9 @@ class Article extends Model
 
     public function user()
     {
-        // return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
 
-        return $this->belongsTo(User::class)->as('author');
+        // return $this->belongsTo(User::class)->as('author');
     }
 
     public function themes()

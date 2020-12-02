@@ -44,11 +44,8 @@
                                     <label for="theme{{ $theme->id }}">
                                         <input type="checkbox" name="themes[]" id="theme{{ $theme->id }}"
                                             value="{{ $theme->id }}"
-                                            @if (old('themes'))
-                                                @if(is_array(old('themes')) && in_array($theme->id, old('themes'))) checked @endif
-                                            @else
-                                                @if(in_array($theme->id, $t)) checked @endif
-                                            @endif>
+
+                                            @if(is_array(old('themes')) && in_array($theme->id, old('themes'))) checked @endif>
 
                                         {{ $theme->theme }}
                                      </label>
@@ -66,7 +63,7 @@
                     </form>
 
                     <div class="d-flex justify-content-around">
-                        
+
                         <input type="submit" form="saveForm" value="Save" class="mt-3 btn btn-success">
                         <a href="/articles" class="mt-3 ml-3 btn btn-warning">Cancel</a>
                         <input type="submit" form="deleteForm" value="Delete" class="btn btn-danger ml-3 mt-3">

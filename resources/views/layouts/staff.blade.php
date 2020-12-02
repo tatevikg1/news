@@ -65,7 +65,7 @@
                             </li>
                         @else
                             <li  class='btn-hover'>
-                                <a class="btn btn-link ml-3" href="/articles"> Articles</a>
+                                <a class="btn btn-link ml-3" href="/articles">My Articles</a>
                             </li>
                         @endif
                     @endguest

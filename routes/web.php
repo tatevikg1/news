@@ -28,6 +28,7 @@ Route::prefix('articles')->group(function(){
     Route::post ('/',               'ReporterController@store')     ->name('articles.store');
     Route::get  ('/',               'ReporterController@index')     ->name('articles.index');
     Route::get  ('/{article}/edit', 'ReporterController@edit')      ->name('articles.edit');
+    Route::get  ('/{article}',      'ReporterController@show')      ->name('articles.show');
     Route::put  ('/{article}',      'ReporterController@update')    ->name('articles.update');
     Route::delete ('/{article}',    'ReporterController@destroy')   ->name('articles.delete');
 

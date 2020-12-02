@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Article;
-use App\Theme;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
+use App\Article;
+use App\Theme;
 use App\User;
+
 use App\Notifications\NewArticle;
+use App\Http\Controllers\EditorController;
 
 class ReporterController extends Controller
 {
@@ -32,7 +35,6 @@ class ReporterController extends Controller
             'themes' => 'required',
         ]);
 
-
         $article = new Article;
         $article->title = $request->input('title');
         $article->content = $request->input('content');
@@ -42,69 +44,87 @@ class ReporterController extends Controller
         $article->themes()->sync($data['themes']);
 
         if (Auth::user()->role  == 0){
+
             $article->update(['sent' => 'true']);
 
             return redirect()->route('editor.index');
-
         }
-
-
         return redirect()->route('articles.index');
     }
 
     public function index()
     {
-
         $articles = Article::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
 
         $editor = User::where('role', 0)->first();
         $temp = $editor->unreadnotifications->toArray();
         $notifications = array_column(array_column($temp, 'data'), 'article_id');
 
-
         return view('reporter.index', compact('articles', 'notifications'));
+    }
+
+    public function show(Article $article)
+    {
+        return view('reporter.show', compact('article'));
     }
 
     public function edit(Article $article)
     {
-        $themes = Theme::all();
-        $t = DB::table('article_theme')->where('article_id', $article->id)->pluck('theme_id')->toArray();
+        if (Auth::user()->can('update', $article)) {
 
-        if(Auth::user()->role == 0){
+            $themes = Theme::all();
+            $t = DB::table('article_theme')->where('article_id', $article->id)->pluck('theme_id')->toArray();
 
-            DB::table('notifications')->where('data', '{"article_id":'.$article->id.'}')->update(['read_at' => now()]);
+            if(Auth::user()->role == 0){
+
+                EditorController::updateNotifications($article);
+            }
+
+            return view('reporter.edit', compact('article', 'themes', 't'));
+        }else{
+            return response([
+                'success' => false,
+                'message' => "Unauthorized"
+            ], 404);
         }
 
-
-        return view('reporter.edit', compact('article', 'themes', 't'));
     }
 
     public function update(Request $request, Article $article)
     {
-        $data = request()->validate([
-            'title' => 'required|max:70',
-            'content' => 'required|min:5',
-            'themes' => 'required',
-        ]);
+        if (Auth::user()->can('update', $article)) {
+            $data = request()->validate([
+                'title' => 'required|min:3|max:100',
+                'content' => 'required|min:5',
+                'themes' => 'required',
+            ]);
 
-        $article->update([
-            'title' => $data['title'],
-            'content' => $data['content'],
-        ]);
+            $article->update([
+                'title' => $data['title'],
+                'content' => $data['content'],
+            ]);
 
-        $article->themes()->sync($data['themes']);
+            $article->themes()->sync($data['themes']);
 
-
-        return redirect()->route('articles.index');
+            return redirect()->route('articles.index');
+        }else{
+            return response([
+                'success' => false,
+                'message' => "Unauthorized"
+            ], 404);
+        }
     }
 
     public function destroy(Article $article)
-   {
-       $article->themes()->sync([]);
+    {
+        if (Auth::user()->can('delete', $article)) {
 
-       $article->delete();
+            $article->themes()->sync([]);
 
-       return redirect()->route('articles.index');
-   }
+            $article->delete();
 
+            return redirect()->route('articles.index');
+        }
+        return "you can not delete";
+    }
 }

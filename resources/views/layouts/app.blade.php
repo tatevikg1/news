@@ -37,9 +37,9 @@
                             <div style="background:rgba(255,255,255,0.8);">
                                 <a href="/themes/{{ $theme->id }}" class=" btn btn-sm">{{ ucfirst($theme->theme) }}</a>
                             </div>
-
                         <?php endforeach; ?>
                     </div>
+                    
                 </div>
 
             </div>
