@@ -31,14 +31,13 @@ class EditorController extends Controller
         $editor = User::where('role', 0)->first();
         $temp = $editor->unreadnotifications->toArray();
         $notifications = array_column(array_column($temp, 'data'), 'article_id');
-
         return view('editor.index', compact('articles', 'notifications'));
     }
 
     public static function updateNotifications(Article $article)
     {
         DB::table('notifications')->where('data', '{"article_id":'.$article->id.'}')->update(['read_at' => now()]);
-
+        
     }
 
 }

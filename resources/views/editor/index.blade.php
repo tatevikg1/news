@@ -16,7 +16,11 @@
                             <th colspan="2">Action</th>
                         </tr>
                         <?php foreach ($articles as $article): ?>
-                            <tr class="table_row">
+                            <tr class="table_row "
+                                style=@if(in_array($article->id, $notifications))
+                                        'background-color:#f5f1f0;
+                                        font-weight: bold;
+                                        border-left: solid 4px ;'  @endif>
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->updated_at }}</td>
