@@ -8,12 +8,17 @@ Route::get  ('login',   'Auth\LoginController@showLoginForm')->name('login');
 Route::post ('login',   'Auth\LoginController@login');
 Route::post ('logout',  'Auth\LoginController@logout')->name('logout');
 
-// editor registers peporters
+// editor registers peporters, all articles, themes(create)
 Route::middleware('is.editor')->group(function(){
     Route::get  ('register',        'Auth\RegisterController@showRegistrationForm');
     Route::post ('register',        'Auth\RegisterController@register');
     Route::get  ('/reporters',      'EditorController@reporters')->name('editor.reporters');
     Route::get  ('/all_articles',   'EditorController@index')->name('editor.index');
+    Route::get  ('/theme/create',   'ThemeController@create')->name('theme.create');
+    Route::post ('/theme',          'ThemeController@store') ->name('theme.store');
+    Route::get  ('/theme',          'ThemeController@index') ->name('theme.index');
+    Route::get  ('/theme/{theme}',  'ThemeController@destroy')->name('theme.delete');
+
 });
 
 // edit staff profile (user data)

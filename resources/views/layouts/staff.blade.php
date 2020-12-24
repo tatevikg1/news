@@ -63,6 +63,9 @@
                             <li  class='btn-hover'>
                                 <a class="btn btn-link ml-3" href="/reporters">Reporters</a>
                             </li>
+                            <li  class='btn-hover'>
+                                <a class="btn btn-link ml-3" href="/theme">Themes</a>
+                            </li>
                         @else
                             <li  class='btn-hover'>
                                 <a class="btn btn-link ml-3" href="/articles">My Articles</a>
