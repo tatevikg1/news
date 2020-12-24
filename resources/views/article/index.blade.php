@@ -35,7 +35,7 @@
                                     </td>
                                 @else
                                     <td>
-                                        <send-button url="/articles/{{ $article->id }}/edit" article-id="{{ $article->id }}" sent="{{ $article->sent }}"></send-button>
+                                        <send-button url="/articles/{{ $article->id }}/edit" article-id="{{ $article->id }}" sent="{{ true }}"></send-button>
                                     </td>
                                 @endif
                             </tr>
