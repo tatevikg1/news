@@ -31,14 +31,14 @@
                                     </td>
                                 @elseif ($article->sent == 'true' )
                                     <td>
-                                        <a href='articles/{{ $article->id }}' class="btn btn-outline-secondary">Sent</a>
+                                        <a href='articles/{{ $articl<td>{{ $article->sent }} </td>e->id }}' class="btn btn-outline-secondary">Sent</a>
                                     </td>
                                 @else
                                     <td>
                                         <send-button url="/articles/{{ $article->id }}/edit" article-id="{{ $article->id }}" sent="{{ $article->sent }}"></send-button>
                                     </td>
                                 @endif
-                                <td>{{ $article->sent }} </td>
+                                <td>{{ $article->id }} </td>
                             </tr>
 
                         <?php endforeach; ?>
