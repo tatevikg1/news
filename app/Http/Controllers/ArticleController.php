@@ -39,8 +39,6 @@ class ArticleController extends Controller
         $article->title = $request->input('title');
         $article->content = $request->input('content');
         $article->user_id = Auth::user()->id;
-        $article->sent = false;
-        $article->published = false;
         $article->save();
 
         $article->themes()->sync($data['themes']);
