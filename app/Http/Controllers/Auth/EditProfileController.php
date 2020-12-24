@@ -40,6 +40,6 @@ class EditProfileController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('articles.index');
+        return redirect()->route('article.index');
     }
 }

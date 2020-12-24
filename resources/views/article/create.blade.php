@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('New Article') }}</div>
 
                 <div class="card-body">
-                    <form class="" action="/articles" method="post" id="saveForm">
+                    <form class="" action="{{ route('article.store') }}" method="post" id="saveForm">
                         @csrf
 
                         <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"

@@ -13,12 +13,11 @@ Route::middleware('is.editor')->group(function(){
     Route::get  ('register',        'Auth\RegisterController@showRegistrationForm');
     Route::post ('register',        'Auth\RegisterController@register');
     Route::get  ('/reporters',      'EditorController@reporters')->name('editor.reporters');
-    Route::get  ('/all_articles',   'EditorController@index')->name('editor.index');
-    Route::get  ('/theme/create',   'ThemeController@create')->name('theme.create');
-    Route::post ('/theme',          'ThemeController@store') ->name('theme.store');
-    Route::get  ('/theme',          'ThemeController@index') ->name('theme.index');
-    Route::get  ('/theme/{theme}',  'ThemeController@destroy')->name('theme.delete');
-
+    Route::get  ('/all_articles',   'EditorController@index')    ->name('editor.index');
+    Route::get  ('/theme/create',   'ThemeController@create')    ->name('theme.create');
+    Route::post ('/theme',          'ThemeController@store')     ->name('theme.store');
+    Route::get  ('/theme',          'ThemeController@index')     ->name('theme.index');
+    Route::get  ('/theme/{theme}',  'ThemeController@destroy')   ->name('theme.delete');
 });
 
 // edit staff profile (user data)
@@ -30,14 +29,13 @@ Route::middleware('auth')->group(function(){
 
 // reporters work with articles
 Route::prefix('articles')->group(function(){
-    Route::get  ('/create',         'ReporterController@create')    ->name('articles.create');
-    Route::post ('/',               'ReporterController@store')     ->name('articles.store');
-    Route::get  ('/',               'ReporterController@index')     ->name('articles.index');
-    Route::get  ('/{article}/edit', 'ReporterController@edit')      ->name('articles.edit');
-    Route::get  ('/{article}',      'ReporterController@show')      ->name('articles.show');
-    Route::put  ('/{article}',      'ReporterController@update')    ->name('articles.update');
-    Route::delete ('/{article}',    'ReporterController@destroy')   ->name('articles.delete');
-
+    Route::get  ('/create',         'ArticleController@create')    ->name('article.create');
+    Route::post ('/',               'ArticleController@store')     ->name('article.store');
+    Route::get  ('/',               'ArticleController@index')     ->name('article.index');
+    Route::get  ('/{article}/edit', 'ArticleController@edit')      ->name('article.edit');
+    Route::get  ('/{article}',      'ArticleController@show')      ->name('article.show');
+    Route::put  ('/{article}',      'ArticleController@update')    ->name('article.update');
+    Route::delete ('/{article}',    'ArticleController@destroy')   ->name('article.delete');
 });
 
 //routes for audience (people who read articles)
