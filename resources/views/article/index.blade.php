@@ -31,7 +31,7 @@
                                     </td>
                                 @elseif ($article->sent == 'true' )
                                     <td>
-                                        <a href='articles/{{ $articl<td>{{ $article->sent }}  }}' class="btn btn-outline-secondary">Sent</a>
+                                        <a href='articles/{{ $article->id  }}' class="btn btn-outline-secondary">Sent</a>
                                     </td>
                                 @else
                                     <td>
