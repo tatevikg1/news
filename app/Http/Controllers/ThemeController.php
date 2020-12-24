@@ -37,7 +37,7 @@ class ThemeController extends Controller
         $themes = Theme::all();
         $themes = $themes->reverse();
 
-        return view('theme.index', compact('themes', 'notifications'));
+        return view('theme.index', compact('themes'));
     }
 
     public function destroy(Theme $theme)
