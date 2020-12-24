@@ -37,8 +37,8 @@
                                     <td>
                                         <send-button url="/articles/{{ $article->id }}/edit" article-id="{{ $article->id }}" sent="{{ $article->sent }}"></send-button>
                                     </td>
-
                                 @endif
+                                <td>{{ $article->sent }} </td>
                             </tr>
 
                         <?php endforeach; ?>
