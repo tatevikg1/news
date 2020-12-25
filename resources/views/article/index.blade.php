@@ -17,7 +17,7 @@
                         </tr>
                         <?php foreach ($articles as $article): ?>
                             <tr class="table_row">
-                                <td>{{ $article->title }}</td>
+                                <td>{{ ucfirst($article->title) }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->updated_at }}</td>
                                 

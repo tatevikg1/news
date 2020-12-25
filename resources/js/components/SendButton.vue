@@ -1,7 +1,7 @@
 <template>
     <div>
         <button
-                @click="sendArticle"
+                v-on:click="sendArticle"
                 v-text="buttonText"
                 v-show="status"
                 class="btn btn-outline-danger">
