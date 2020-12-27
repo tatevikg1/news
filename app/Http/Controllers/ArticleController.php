@@ -10,7 +10,7 @@ use App\Article;
 use App\Theme;
 use App\User;
 
-use App\Notifications\NewArticle;
+// use App\Notifications\NewArticle;
 use App\Http\Controllers\EditorController;
 
 class ArticleController extends Controller
@@ -93,7 +93,7 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         if (Auth::user()->can('update', $article)) {
-            $data = request()->validate([
+            $data = $request->validate([
                 'title' => 'required|min:3|max:100',
                 'content' => 'required|min:5',
                 'themes' => 'required',

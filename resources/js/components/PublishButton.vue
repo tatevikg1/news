@@ -1,7 +1,7 @@
 <template>
     <div>
         <button
-                @click="publish"
+                v-on:click="publish"
                 v-text="buttonText"
                 v-show="status"
                 :class="[status ? 'btn btn-outline-success' :  'badge badge-success']">

@@ -34,7 +34,7 @@
 
                     <div class="d-flex flex-wrap">
                         <?php foreach ($themes as  $key => $theme): ?>
-                            <div style="background:rgba(255,255,255,0.8);">
+                            <div class="mr-3" style="background:rgba(255,255,255,0.9);">
                                 <a href="/themes/{{ $theme->id }}" class=" btn btn-sm">{{ ucfirst($theme->theme) }}</a>
                             </div>
                         <?php endforeach; ?>
@@ -47,7 +47,7 @@
 
         <main>
             <div class="container" style="padding-top: 70px;">
-                <a class="" href="{{ url('/') }}" id="appName">
+                <a href="{{ url('/') }}" id="appName">
                     <h1>
                         {{ config('app.name', 'Some Online News Site') }} - Some Long Name
                     </h1>

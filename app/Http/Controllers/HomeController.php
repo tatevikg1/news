@@ -53,11 +53,11 @@ class HomeController extends Controller
         return view('audience.staff', compact('staff', 'themes'));
     }
 
-    // public function about()
-    // {
-    //     $themes = Theme::all();
+    public function about()
+    {
+        $themes = Theme::all();
 
-    //     return view('audience.about', compact('themes'));
-    // }
+        return view('audience.about', compact('themes'));
+    }
 
 }

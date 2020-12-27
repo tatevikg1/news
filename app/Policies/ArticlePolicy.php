@@ -5,7 +5,7 @@ namespace App\Policies;
 use App\Article;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Auth\Access\Response;
+// use Illuminate\Auth\Access\Response;
 
 class ArticlePolicy
 {
