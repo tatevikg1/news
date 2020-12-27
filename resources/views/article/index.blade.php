@@ -27,7 +27,10 @@
                                     </td>
                                 @elseif($article->user_id == 1)
                                     <td>
-                                        <a href='articles/{{ $article->id }}/edit' class="btn btn-outline-secondary">Edit</a>
+                                        <publish-button url="/articles/{{ $article->id }}/edit"
+                                                        article-id="{{ $article->id }}"
+                                                        published="{{ $article->published }}">
+                                        </publish-button>
                                     </td>
                                 @elseif ($article->sent == 'true')
                                     <td>

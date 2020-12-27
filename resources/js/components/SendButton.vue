@@ -1,16 +1,10 @@
 <template>
     <div>
-        <button
-                v-on:click="sendArticle"
-                v-text="buttonText"
-                v-show="status"
-                class="btn btn-outline-danger">
-        </button>
-
-        <p class='btn btn-outline-secondary' v-show="!status">Sent</p>
-
+        <button v-on:click="sendArticle"  v-text="buttonText" v-show="status" class="btn btn-outline-danger"> </button>
         <a v-bind:href="url"  class='btn btn-outline-primary' v-show="status">Edit</a>
 
+        <!-- <p class='btn btn-outline-secondary' v-show="!status">Sent</p> -->
+        <a v-bind:href="articleId"  class='btn btn-outline-secondary' v-show="!status">Sent</a>
     </div>
 </template>
 
