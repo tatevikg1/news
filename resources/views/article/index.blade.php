@@ -29,7 +29,7 @@
                                     <td>
                                         <publish-button url="/articles/{{ $article->id }}/edit"
                                                         article-id="{{ $article->id }}"
-                                                        published="{{ $article->published }}">
+                                                        published="{{ 'false' }}">
                                         </publish-button>
                                     </td>
                                 @elseif ($article->sent == 'true')
@@ -38,7 +38,10 @@
                                     </td>
                                 @else
                                     <td>
-                                        <send-button url="/articles/{{ $article->id }}/edit" article-id="{{ $article->id }}" sent="{{ $article->sent }}"></send-button>
+                                        <send-button url="/articles/{{ $article->id }}/edit" 
+                                                    article-id="{{ $article->id }}" 
+                                                    sent="{{ 'false' }}">
+                                        </send-button>
                                     </td>
                                 @endif
                             </tr>

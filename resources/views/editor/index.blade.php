@@ -35,7 +35,7 @@
                                     <td>
                                         <publish-button url="/articles/{{ $article->id }}/edit"
                                                         article-id="{{ $article->id }}"
-                                                        published="{{ $article->published }}">
+                                                        published="{{ 'not published' }}">
                                         </publish-button>
                                     </td>
                                 @endif
