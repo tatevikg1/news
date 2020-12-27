@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button v-on:click="sendArticle"  v-text="buttonText" v-show="status" class="btn btn-outline-danger"> </button>
+        <button v-on:click="sendArticle()"  v-text="buttonText" v-show="status" class="btn btn-outline-danger"> </button>
         <a v-bind:href="url"  class='btn btn-outline-primary' v-show="status">Edit</a>
 
         <!-- <p class='btn btn-outline-secondary' v-show="!status">Sent</p> -->

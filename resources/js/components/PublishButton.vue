@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button v-on:click="publish" v-text="buttonText" v-show="status"
+        <button v-on:click="publish()" v-text="buttonText" v-show="status"
                 :class="[status ? 'btn btn-outline-success' :  'badge badge-success']">
         </button>
         <a v-bind:href="url" class='btn btn-outline-primary' v-show="status">Edit</a>
