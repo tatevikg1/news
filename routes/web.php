@@ -49,7 +49,7 @@ Route::get('/{article}',        'HomeController@show')->name('article');
 
 // component controllers routes
 Route::middleware('auth')->group(function(){
-    Route::post('/send/{article}',       'SendController@update');
-    Route::post('/publish/{article}',    'PublishController@update');
+    Route::post('send/{article}',       'SendController@update');
+    Route::post('publish/{article}',    'PublishController@update');
 });
 
