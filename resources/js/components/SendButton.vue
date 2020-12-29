@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p v-on:click="sendArticle()"  v-text="buttonText" v-show="status" class="btn btn-outline-danger"> </p>
+        <p v-on:click="sendArticle()"  v-show="status" class="btn btn-outline-danger"> Send</p>
         <a v-bind:href="url"  class='btn btn-outline-primary' v-show="status">Edit</a>
 
         <!-- <p class='btn btn-outline-secondary' v-show="!status">Sent</p> -->
@@ -29,7 +29,7 @@
 
         methods: {
             sendArticle() {
-                axios.post('send/'+ this.articleId)
+                axios.post('/send/'+ this.articleId)
                     .then(response => {
 
                         if (!this.status) {
@@ -47,13 +47,6 @@
                         }
                     });
             }
-        },
-
-        computed: {
-            buttonText() {
-                return (this.status) ? 'Send' : 'Sent';
-            },
-
         }
     }
 </script>

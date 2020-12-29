@@ -31,7 +31,7 @@
 
         methods: {
             publish() {
-                axios.post('publish/'+ this.articleId)
+                axios.post('/publish/'+ this.articleId)
                     .then(response => {
 
                         if (!this.status) {
