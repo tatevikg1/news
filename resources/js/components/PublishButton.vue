@@ -3,7 +3,7 @@
         <button v-on:click="publish"  
                 v-show="status" 
                 class= "btn btn-outline-danger">Publish</button>
-        <button class="btn btn>Al</button>
+        <button class="btn btn-my" @click="al">Al</button>
         <a  v-bind:href="url" 
             class='btn btn-outline-primary' 
             v-show="status">Edit</a>
