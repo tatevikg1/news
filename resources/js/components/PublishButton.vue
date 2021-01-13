@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="publish" v-text="buttonText" v-show="status" class= "btn btn-outline-danger"></button>
+        <button @click="publish"  v-show="status" class= "btn btn-outline-danger">Publish</button>
         
         <a v-bind:href="url" class='btn btn-outline-primary' v-show="status">Edit</a>
 
@@ -27,35 +27,27 @@
             }
         },
 
-
         methods: {
             publish() {
-                alert('canceled');
-                axios.post('/publish/'+ this.articleId)
-                    .then(response => {
+                alert('published');
+                // axios.post('/publish/'+ this.articleId)
+                //     .then(response => {
 
-                        // if (!this.status) {
-                        //     this.url = '';
-                        //     return
-                        // }
+                //         // if (!this.status) {
+                //         //     this.url = '';
+                //         //     return
+                //         // }
 
-                        this.status = ! this.status;
+                //         this.status = ! this.status;
 
-                        console.log(response.data);
-                    })
-                    .catch(errors => {
-                        if (errors.response.status == 401) {
-                            window.location = '/login';
-                        }
-                    });
+                //         console.log(response.data);
+                //     })
+                //     .catch(errors => {
+                //         if (errors.response.status == 401) {
+                //             window.location = '/login';
+                //         }
+                //     });
             }
-        },
-
-        computed: {
-            buttonText() {
-                return (this.status) ? 'Publish' : 'Published';
-            },
-
         }
     }
 </script>
