@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button v-on:click="publish" v-text="buttonText" v-show="status" class= "btn btn-outline-danger"></button>
+        <button @click="publish" v-text="buttonText" v-show="status" class= "btn btn-outline-danger"></button>
         
         <a v-bind:href="url" class='btn btn-outline-primary' v-show="status">Edit</a>
 
@@ -30,7 +30,7 @@
 
         methods: {
             publish() {
-                console.log('hello');
+                alert('canceled');
                 axios.post('/publish/'+ this.articleId)
                     .then(response => {
 
