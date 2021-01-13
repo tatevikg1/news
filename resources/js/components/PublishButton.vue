@@ -1,10 +1,16 @@
 <template>
     <div>
-        <button v-on:click="publish"  v-show="status" class= "btn btn-outline-danger">Publish</button>
-        
-        <a v-bind:href="url" class='btn btn-outline-primary' v-show="status">Edit</a>
+        <button v-on:click="publish"  
+                v-show="status" 
+                class= "btn btn-outline-danger">Publish</button>
+        <button class="btn btn>Al</button>
+        <a  v-bind:href="url" 
+            class='btn btn-outline-primary' 
+            v-show="status">Edit</a>
 
-        <a v-bind:href="articleId" class='btn btn-outline-success' v-show="!status">Published</a>
+        <a  v-bind:href="articleId" 
+            class='btn btn-outline-success' 
+            v-show="!status">Published</a>
     </div>
 </template>
 
@@ -46,6 +52,9 @@
                 //             window.location = '/login';
                 //         }
                 //     });
+            },
+            al(){
+                alert('al');
             }
         }
     }
