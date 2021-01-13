@@ -1,8 +1,7 @@
 <template>
     <div>
-        <p v-on:click="publish()" v-text="buttonText" v-show="status"
-                :class="[status ? 'btn btn-outline-success' :  'badge badge-success']">
-        </p>
+        <button v-on:click="publish()" v-text="buttonText" v-show="status" class= "btn btn-outline-danger"></button>
+        
         <a v-bind:href="url" class='btn btn-outline-primary' v-show="status">Edit</a>
 
         <!-- <p class='btn btn-outline-success' v-show="!status">Published</p> -->
@@ -31,13 +30,14 @@
 
         methods: {
             publish() {
+                console.log('hello');
                 axios.post('/publish/'+ this.articleId)
                     .then(response => {
 
-                        if (!this.status) {
-                            this.url = '';
-                            return
-                        }
+                        // if (!this.status) {
+                        //     this.url = '';
+                        //     return
+                        // }
 
                         this.status = ! this.status;
 
