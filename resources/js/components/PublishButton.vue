@@ -1,7 +1,7 @@
 <template>
     <div>
         <form v-on:submit.prevent="publish">
-            <button @click.prevent="publish"  v-show="status" class= "btn btn-outline-danger">Publish</button>
+            <input type="submit" @click.prevent="publish"  v-show="status" class= "btn btn-outline-danger" text="Publish">
         </form>
         
         <a v-bind:href="url" class='btn btn-outline-primary' v-show="status">Edit</a>
