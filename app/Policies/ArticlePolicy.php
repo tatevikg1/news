@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Article;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-// use Illuminate\Auth\Access\Response;
 
 class ArticlePolicy
 {
@@ -25,7 +24,7 @@ class ArticlePolicy
             return true;
         }
 
-        if($user->id === (int)$article->user_id && $article->sent == false){
+        if( $user->id == (int)$article->user_id ){
             return true;
         }
         return false;
@@ -43,7 +42,7 @@ class ArticlePolicy
         if ((int)$user->role === 0 && $user->id === (int)$article->user_id){
             return true;
         }
-        if($user->id === (int)$article->user_id && $article->sent == false){
+        if($user->id === (int)$article->user_id){
             return true;
         }
         return false;

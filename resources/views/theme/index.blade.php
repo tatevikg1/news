@@ -8,7 +8,7 @@
                 <div class="card-header justify-content-between d-flex ">
                     <div>{{ __('Themes') }}</div>
                     <div>
-                        <a href="/theme/create" class="btn btn-outline-success">
+                        <a href="{{route('theme.create')}}" class="btn btn-outline-success">
                             Add
                         </a>
                     </div>
@@ -27,7 +27,7 @@
                             <tr class="table_row">
                                 <td>{{ ucfirst($theme->theme) }}</td>
                                 <td>{{ $theme->created_at }}</td>
-                                <td><a href="/theme/{{ $theme->id }}" class="btn btn-outline-danger">
+                                <td><a href="{{route('theme.delete', ['theme' => $theme->id])}}" class="btn btn-outline-danger">
                                         Delete
                                     </a>
                                 </td>                         

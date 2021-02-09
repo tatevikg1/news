@@ -25,7 +25,7 @@ class RegisterController extends Controller
 
     protected function register(Request $request)
     {
-        $data = request()->validate([
+        $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'role' => ['required', 'integer', 'max:2'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -34,12 +34,12 @@ class RegisterController extends Controller
 
 
         User::create([
-            'name' => $data['name'],
-            'role' => $data['role'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $request['name'],
+            'role' => $request['role'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
         ]);
 
-        return redirect()->route('editor.reporters');
+        return redirect()->route('editor.reporter');
     }
 }

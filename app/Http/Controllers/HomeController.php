@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Theme;
 use App\Article;
 use App\User;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -35,10 +32,10 @@ class HomeController extends Controller
         }
     }
 
-    public function filter(Theme $theme)
+    public function filter($slug)
     {
+        $theme = Theme::where('slug', $slug)->first();
         $articles = $theme->articles()->latest()->paginate(20);
-
 
         $themes = Theme::all();
 

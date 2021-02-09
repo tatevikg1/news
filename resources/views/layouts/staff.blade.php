@@ -43,7 +43,7 @@
 
                         @if (Auth::user()->role == 0)
                             <li class='btn-hover'>
-                                <a href="/all_articles" class="btn btn-link ml-3 notification">
+                                <a href="{{route('editor.index')}}" class="btn btn-link ml-3 notification">
                                     <span>Articles</span>
                                     @if(count(Auth::user()->unreadnotifications)>0)
                                     <span class="new_notif">{{ count(Auth::user()->unreadnotifications) }}</span>
@@ -53,17 +53,17 @@
 
 
                             <li  class='btn-hover'>
-                                <a class="btn btn-link ml-3" href="/articles"> My Articles</a>
+                                <a class="btn btn-link ml-3" href="{{route('article.index')}}">My Articles</a>
                             </li>
                             <li  class='btn-hover'>
-                                <a class="btn btn-link ml-3" href="/reporters">Reporters</a>
+                                <a class="btn btn-link ml-3" href="{{route('theme.index')}}">Themes</a>
                             </li>
                             <li  class='btn-hover'>
-                                <a class="btn btn-link ml-3" href="/theme">Themes</a>
+                                <a class="btn btn-link ml-3" href="{{route('editor.reporter')}}">Reporters</a>
                             </li>
                         @else
                             <li  class='btn-hover'>
-                                <a class="btn btn-link ml-3" href="/articles">My Articles</a>
+                                <a class="btn btn-link ml-3" href="{{route('article.index')}}">My Articles</a>
                             </li>
                         @endif
                     @endguest

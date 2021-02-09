@@ -10993,3 +10993,9 @@ strong {
   text-decoration: none;
 }
 
+.newArticle {
+  background-color: #f5f1f0;
+  font-weight: bold;
+  border-left: solid 4px;
+}
+

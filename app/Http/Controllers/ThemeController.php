@@ -23,11 +23,16 @@ class ThemeController extends Controller
 
     public function store(Request $request)
     {
-        $data = request()->validate([
+        $request->validate([
             'theme' => 'required|unique:themes|max:20',
         ]);
 
-        Theme::create(['theme' => $request->theme]);
+        $slug = str_replace(' ', '-', strtolower($request['theme']));
+        
+        Theme::create([
+            'theme' => $request->theme,
+            'slug' => $slug,
+        ]);
 
         return redirect()->route('theme.index');
     }

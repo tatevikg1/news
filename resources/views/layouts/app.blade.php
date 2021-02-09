@@ -33,9 +33,10 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
                     <div class="d-flex flex-wrap">
+                        <a href="{{ route('audience.index') }}" class=" btn btn-sm mr-3"  style="background:rgba(255,255,255,0.9);">All</a>
                         <?php foreach ($themes as  $key => $theme): ?>
                             <div class="mr-3" style="background:rgba(255,255,255,0.9);">
-                                <a href="/themes/{{ $theme->id }}" class=" btn btn-sm">{{ ucfirst($theme->theme) }}</a>
+                                <a href="{{ route('audience.theme', ['slug' => $theme->slug]) }}" class=" btn btn-sm">{{ ucfirst($theme->theme) }}</a>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -47,11 +48,7 @@
 
         <main>
             <div class="container" style="padding-top: 70px;">
-                <a href="{{ url('/') }}" id="appName">
-                    <h1>
-                        {{ config('app.name', 'Some Online News Site') }} - Some Long Name
-                    </h1>
-                </a>
+                <h1 id="appName"> {{ config('app.name', 'Some Online News Site') }} </h1>
                 <hr>
             </div>
 

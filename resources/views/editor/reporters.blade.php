@@ -29,7 +29,7 @@
                                 <td>{{ $reporter->name }}</td>
                                 <td>{{ count($reporter->articles) }}</td>
                                 <td>{{ $reporter->created_at->format('d/m/Y') }}</td>
-                                <td><a href="/profile/edit" class="btn">Edit</a></td>
+                                <td><a href="/profile/edit" class="btn btn-outline-secondary">Edit</a></td>
                             </tr>
 
                         <?php endforeach; ?>

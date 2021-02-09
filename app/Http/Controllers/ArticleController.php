@@ -112,7 +112,10 @@ class ArticleController extends Controller
             ]);
 
             $article->themes()->sync($data['themes']);
-
+            
+            if(Auth::user()->role == 0){
+                return redirect()->route('editor.index');
+            }
             return redirect()->route('article.index');
         }else{
             return response([

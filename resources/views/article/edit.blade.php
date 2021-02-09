@@ -64,9 +64,9 @@
 
                     <div class="d-flex justify-content-around">
 
-                        <input type="submit" form="saveForm" value="Save" class="mt-3 btn btn-success">
-                        <a href="/articles" class="mt-3 ml-3 btn btn-warning">Cancel</a>
-                        <input type="submit" form="deleteForm" value="Delete" class="btn btn-danger ml-3 mt-3">
+                        <input type="submit" form="saveForm" value="Save" class="mt-3 btn btn-outline-success">
+                        <a href="/articles" class="mt-3 ml-3 btn btn-outline-secondary">Cancel</a>
+                        <input type="submit" form="deleteForm" value="Delete" class="btn btn-outline-danger ml-3 mt-3">
 
                     </div>
 
