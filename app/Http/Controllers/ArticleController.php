@@ -11,7 +11,7 @@ use App\Theme;
 use App\User;
 
 // use App\Notifications\NewArticle;
-use App\Http\Controllers\EditorController;
+// use App\Http\Controllers\EditorController;
 
 class ArticleController extends Controller
 {
@@ -20,6 +20,9 @@ class ArticleController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * @param  \App\Theme $themes
+     * */ 
     public function create()
     {
         $themes = Theme::all();
@@ -27,12 +30,16 @@ class ArticleController extends Controller
         return view('article.create', compact('themes'));
     }
 
+    /**
+     * @param  \Illumenate\Http\Request $request
+     * @param  \App\Article $article
+     * */
     public function store(Request $request)
     {
-        $data = request()->validate([
+        $data = $request->validate([
             'title' => 'required|max:70',
             'content' => 'required|min:5',
-            'themes' => 'required',
+            'themes' => 'required|array|min:1',
         ]);
 
         $article = new Article;
@@ -73,14 +80,14 @@ class ArticleController extends Controller
         if (Auth::user()->can('update', $article)) {
 
             $themes = Theme::all();
-            $t = DB::table('article_theme')->where('article_id', $article->id)->pluck('theme_id')->toArray();
+            $checkedThemes = DB::table('article_theme')->where('article_id', $article->id)->pluck('theme_id')->toArray();
 
             if(Auth::user()->role == 0){
 
                 EditorController::updateNotifications($article);
             }
 
-            return view('article.edit', compact('article', 'themes', 't'));
+            return view('article.edit', compact('article', 'themes', 'checkedThemes'));
         }else{
             return response([
                 'success' => false,

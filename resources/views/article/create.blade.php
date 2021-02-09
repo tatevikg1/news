@@ -49,7 +49,7 @@
 
                         @error('themes')
                             <span class="invalid-feedback" role="alert">
-                                <strong>Select at least one theme.</strong>
+                                <strong>{{$message}}</strong>
                             </span>
                         @enderror
 

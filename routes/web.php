@@ -23,7 +23,7 @@ Route::middleware('is.editor')->group(function(){
 // edit staff profile (user data)
 Route::middleware('auth')->group(function(){
     Route::get  ('/profile/edit',         'Auth\EditProfileController@showEditForm');
-    Route::post ('/profile/edit',         'Auth\EditProfileController@update');
+    Route::post ('/profile/update',       'Auth\EditProfileController@update');
 });
 
 

@@ -30,13 +30,13 @@ class EditProfileController extends Controller
     {
         $user = Auth::user();
 
-        $data = request()->validate([
+        $data = $request->validate([
             'email' => ['nullable', 'email', 'max:255', 'unique:users'],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'biography' => ['nullable', 'string', 'min:20'],
         ]);
 
         $data = array_filter($data);
-
 
         $user->update($data);
 

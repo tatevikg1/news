@@ -45,7 +45,7 @@
                                         <input type="checkbox" name="themes[]" id="theme{{ $theme->id }}"
                                             value="{{ $theme->id }}"
 
-                                            @if(is_array(old('themes')) && in_array($theme->id, old('themes'))) checked @endif>
+                                            @if(in_array($theme->id, $checkedThemes)) checked @endif>
 
                                         {{ $theme->theme }}
                                      </label>

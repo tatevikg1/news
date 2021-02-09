@@ -41,12 +41,6 @@
                     @guest
                     @else
 
-                        <li  class='btn-hover'>
-                            <a class="btn btn-link ml-3" href="/articles/create">Write an Article</a>
-                        </li>
-
-
-
                         @if (Auth::user()->role == 0)
                             <li class='btn-hover'>
                                 <a href="/all_articles" class="btn btn-link ml-3 notification">
