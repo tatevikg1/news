@@ -4,16 +4,12 @@
 
 // Variables
 @import 'variables';
+@import 'staff';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-textarea{
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    width:100%;
-}
+
 body{
     background-color: white;
 }
@@ -24,7 +20,6 @@ body{
     text-align: center;
     text-decoration: none;
 }
-
 .navbar{
     height:50px;
 }
@@ -46,35 +41,20 @@ strong{
     color:white;
     background-color: gray
 }
-
-
-
-.notification {
-  text-decoration: none;
-  position: relative;
-  display: inline-block;
-}
-.notification .new_notif {
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  padding: 1px 6px;
-  border-radius: 60%;
-  background-color: red;
-  color: white;
-}
 .btn-link{
     background-color: grey;
     color:white;
     text-decoration: none;
 }
-.btn-hover :hover{
+.btn-hover:hover{
     background-color: white;
     text-decoration: none;
 }
-
-.newArticle{
-    background-color:#f5f1f0;
-    font-weight: bold;
-    border-left: solid 4px ;
+.article:hover{
+    cursor: pointer;
+    background-color: rgb(240, 230, 233);
+    border-style: solid;
+    border-color: rgb(82, 80, 80);
+    border-width: 1px;
 }
+

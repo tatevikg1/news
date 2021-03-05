@@ -1,6 +1,39 @@
 @import url(https://fonts.googleapis.com/css2?family=Srisakdi:wght@400&display=swap);@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;
 
 900&display=swap);@charset "UTF-8";
+.notification {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+.notification .new_notif {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  padding: 1px 6px;
+  border-radius: 60%;
+  background-color: red;
+  color: white;
+}
+
+.newArticle {
+  background-color: #f5f1f0;
+  font-weight: bold;
+  border-left: solid 4px;
+}
+
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/*!
+ * Bootstrap v4.5.0 (https://getbootstrap.com/)
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
 
 :root {
   --blue: #3490dc;
@@ -10923,11 +10956,6 @@ a.text-dark:focus {
   }
 }
 
-textarea {
-  box-sizing: border-box;
-  width: 100%;
-}
-
 body {
   background-color: white;
 }
@@ -10966,36 +10994,22 @@ strong {
   background-color: gray;
 }
 
-.notification {
-  text-decoration: none;
-  position: relative;
-  display: inline-block;
-}
-
-.notification .new_notif {
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  padding: 1px 6px;
-  border-radius: 60%;
-  background-color: red;
-  color: white;
-}
-
 .btn-link {
   background-color: grey;
   color: white;
   text-decoration: none;
 }
 
-.btn-hover :hover {
+.btn-hover:hover {
   background-color: white;
   text-decoration: none;
 }
 
-.newArticle {
-  background-color: #f5f1f0;
-  font-weight: bold;
-  border-left: solid 4px;
+.article:hover {
+  cursor: pointer;
+  background-color: #f0e6e9;
+  border-style: solid;
+  border-color: #525050;
+  border-width: 1px;
 }
 

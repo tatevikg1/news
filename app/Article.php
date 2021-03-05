@@ -32,4 +32,5 @@ class Article extends Model
     {
         return $this->belongsToMany(Theme::class);
     }
+
 }

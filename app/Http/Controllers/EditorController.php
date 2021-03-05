@@ -35,7 +35,6 @@ class EditorController extends Controller
     public static function updateNotifications(Article $article)
     {
         DB::table('notifications')->where('data', '{"article_id":'.$article->id.'}')->update(['read_at' => now()]);
-        
     }
 
 }
